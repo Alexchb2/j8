@@ -13,36 +13,36 @@ public class DataHelper {
 
     private DataHelper() {
     }
-    @Value
-    public static class AuthInfo{
-        String login;
-        String password;
-    }
 
-
-    public static AuthInfo getAuthInfoWithTestData() {
+    public static AuthInfo getAuthInfo() {
         return new AuthInfo("vasya", "qwerty123");
     }
 
-    private static String generateRandomLogin(){
+    private static String generateRandomLogin() {
         return faker.name().username();
     }
 
-    private static String generateRandomPassword(){
+    private static String generateRandomPassword() {
         return faker.internet().password();
     }
 
-    private static AuthInfo generateRandomUser(){
+    public static AuthInfo generateRandomUser() {
         return new AuthInfo(generateRandomLogin(), generateRandomPassword());
     }
 
-    public static VerificationCode generateVerificationCode(){
+    public static VerificationCode generateRandomVerificationCode() {
         return new VerificationCode(faker.numerify("######"));
     }
 
     @Value
-    public static class VerificationCode{
+    public static class VerificationCode {
         String code;
+    }
+
+    @Value
+    public static class AuthInfo {
+        String login;
+        String password;
     }
 
     @Data

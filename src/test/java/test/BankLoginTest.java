@@ -17,11 +17,11 @@ public class BankLoginTest {
     }
 
     @Test
-    void shouldSuccesfullLogin(){
+    void shouldSuccessfulLogin() {
         var loginPage = open("http://localhost:9999", LoginPage.class);
-        var authInfo = DataHelper.getAuthInfoWithTestData();
+        var authInfo = DataHelper.getAuthInfo();
         var verificationPage = loginPage.validLogin(authInfo);
-        verificationPage.verifyVerificationPageVisiblity();
+        verificationPage.verificationPageVisibility();
         var verificationCode = SQLHelper.getVerificationCode();
         verificationPage.validVerify(verificationCode.getCode());
     }

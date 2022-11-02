@@ -4,25 +4,24 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
 public class VerificationPage {
-    @FindBy(css = "[data-test-id=code] input")
-    private SelenideElement codeField;
-    @FindBy(css = "[data-test-id=action-verify]")
-    private SelenideElement verifyButton;
-    @FindBy(css = "[data-test-id='error-notification']")
-    private SelenideElement errorNotification;
+    private final SelenideElement codeField = $("[data-test-id=code] input");
+    private final SelenideElement verifyButton = $("[data-test-id=action-verify]");
+    private final SelenideElement errorNotification = $("[data-test-id='error-notification']");
 
-    public void verifyVerificationPageVisiblity(){
+
+    public void verificationPageVisibility() {
         codeField.shouldBe(visible);
     }
 
-    public void verifyErrorNotificationVisiblity(){
+    public void verifyErrorNotificationVisibility() {
         errorNotification.shouldBe(visible);
     }
 
-    public DashboardPage validVerify(String verificationCode){
+    public DashboardPage validVerify(String verificationCode) {
         verify(verificationCode);
         return page(DashboardPage.class);
     }
